@@ -1,0 +1,28 @@
+.home-main-container {
+  padding: 12px;
+  flex: 1;
+}
+
+.home-head {
+  font-size: 42px;
+  color: #0f0f0f;
+}
+
+.level-up-head {
+  color: #615efc;
+}
+
+.home-description {
+  font-size: 28px;
+  color: #0f0f0f;
+  line-height: 1.5;
+}
+
+@media screen and (max-width: 576px) {
+  .home-head {
+    font-size: 28px;
+  }
+  .home-description {
+    font-size: 18px;
+  }
+}

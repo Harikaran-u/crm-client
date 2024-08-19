@@ -1,0 +1,54 @@
+.feedback-main-container {
+  padding: 6px;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.trend-input {
+  width: 120px !important;
+  align-self: flex-end;
+  margin-top: 10px !important;
+}
+
+.trend-label {
+  font-size: 14px !important;
+}
+
+.feedback-charts-container {
+  width: 100%;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.feedback-head {
+  font-weight: 500;
+  color: #615efc;
+}
+.feedback-charts-container-sm {
+  display: none;
+}
+.recharts-wrapper {
+  width: 100% !important;
+}
+
+@media screen and (max-width: 767px) {
+  .feedback-charts-container {
+    display: none;
+  }
+  .feedback-charts-container-sm {
+    display: block;
+    width: 100%;
+    overflow-y: auto;
+  }
+  .feedback-head {
+    font-size: 16px;
+    text-align: center;
+  }
+  .trend-input {
+    align-self: flex-start;
+  }
+}

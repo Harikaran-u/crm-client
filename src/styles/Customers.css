@@ -1,0 +1,36 @@
+.customer-main-container {
+  padding: 12px;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  width: 80%;
+}
+.add-customer-link {
+  align-self: flex-end;
+}
+
+.add-new-customer-btn {
+  width: 120px;
+  color: #0f0f0f;
+  background-color: #fff;
+  border: 2px solid #eeedeb;
+  border-radius: 4px;
+  padding: 6px;
+  font-size: 12px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+@media screen and (max-width: 576px) {
+  .customer-main-container {
+    width: 90%;
+    padding: 4px;
+  }
+}
+
+@media screen and (min-width: 578px) and (max-width: 992px) {
+  .customer-main-container {
+    width: 50%;
+    padding: 8px;
+  }
+}

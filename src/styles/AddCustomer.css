@@ -1,0 +1,78 @@
+.add-customer-main-container {
+  padding: 12px;
+  width: 100%;
+  display: flex;
+}
+.add-customer-img {
+  width: 50%;
+}
+
+.add-new-customer-form {
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  gap: 20px;
+}
+.react-tel-input .form-control {
+  width: 100% !important;
+  height: 50px !important;
+}
+.new-customer-input-container {
+  display: flex;
+  flex-direction: column;
+  width: 500px;
+  justify-content: space-between;
+}
+
+.new-customer-label {
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.new-customer-input {
+  border-radius: 4px;
+  padding: 4px;
+  outline: none;
+  border: 2px solid #eeedeb;
+  width: 400px;
+}
+.new-customer-input:focus {
+  outline: 2px solid rgb(73, 185, 255);
+  border: none;
+}
+
+.new-customer-sub-head {
+  font-size: 14px;
+  font-weight: 500;
+  text-decoration: underline;
+}
+
+.add-customer-submit-btn {
+  border: none;
+  border-radius: 4px;
+  background-color: #0f0f0f;
+  color: #fff;
+  font-size: 14px;
+  font-weight: 500;
+  width: 120px;
+  height: 42px;
+  padding: 6px;
+  cursor: pointer;
+}
+
+@media screen and (max-width: 576px) {
+  .add-customer-main-container {
+    flex-direction: column;
+  }
+  .add-customer-img {
+    width: 100%;
+  }
+  .add-new-customer-form {
+    padding: 10px;
+    gap: 10px;
+  }
+  .add-customer-submit-btn {
+    width: 100%;
+  }
+}

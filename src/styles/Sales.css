@@ -1,0 +1,86 @@
+.sales-main-container {
+  padding: 6px;
+  width: 100%;
+  position: relative;
+}
+
+.regional-quarter-sales-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px;
+}
+.custom-charts-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.customer-chart-head {
+  font-weight: 500;
+  font-size: 24px;
+  color: #3fa2f6;
+  text-align: center;
+}
+
+.monthly-sales-container {
+  width: 100%;
+  padding: 6px;
+  margin-top: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.bar-chart-sm {
+  display: none;
+}
+.recharts-legend-wrapper {
+  width: 100% !important;
+}
+.year-input {
+  width: 100px !important;
+  /* align-self: flex-end; */
+}
+.yearly-data-input-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  padding: 10px;
+}
+.target-box {
+  border: 1px solid #eeeeee;
+  border-radius: 4px;
+  padding: 4px;
+}
+
+.target-label {
+  font-size: 14px;
+  font-weight: 500;
+  color: #0f0f0f;
+}
+
+.target-value {
+  color: #ef5a6f;
+}
+.target-value-achived {
+  color: #059212;
+}
+
+@media screen and (max-width: 767px) {
+  .regional-quarter-sales-container {
+    flex-direction: column;
+    padding: 0;
+  }
+  .customer-chart-head {
+    font-size: 20px;
+  }
+  .bar-chart-md {
+    display: none;
+  }
+  .bar-chart-sm {
+    display: block;
+  }
+  .sales-main-container {
+    padding: 0;
+  }
+}

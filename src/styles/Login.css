@@ -1,0 +1,77 @@
+.login-main-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  background-image: url("https://res.cloudinary.com/diuvnny8c/image/upload/v1723357505/133742374_10221118_puv5ds.jpg");
+  background-size: cover;
+  background-position: center;
+}
+
+.login-form-container {
+  background-color: #fbfdfdf3;
+  width: 480px;
+  border-radius: 8px;
+  border: 2px solid #000000;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px,
+    rgba(0, 0, 0, 0.3) 0px 30px 60px -30px;
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 10px;
+}
+
+.login-head {
+  font-size: 24px;
+  font-weight: bold;
+  text-align: center;
+}
+
+.login-input {
+  width: 100%;
+  margin-top: 10px;
+}
+
+.login-btn {
+  height: 42px;
+  background-color: #0f0f0f;
+  color: #fff;
+  font-size: 16px;
+  font-weight: bold;
+  border: none;
+  border-radius: 4px;
+  margin-top: 10px;
+  cursor: pointer;
+}
+
+.signup-text {
+  margin-top: 10px;
+  font-size: 14px;
+  font-weight: 500;
+  color: #121212;
+}
+
+.register-link {
+  color: #23a6c4;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.login-error-msg {
+  font-size: 14px;
+  color: #f5004f;
+  margin-top: 6px;
+}
+
+@media screen and (max-width: 767px) {
+  .login-form-container {
+    width: 340px;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .login-form-container {
+    width: 280px;
+  }
+}

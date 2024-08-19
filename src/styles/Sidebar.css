@@ -1,0 +1,82 @@
+.side-bar-main-container {
+  width: 240px;
+  position: sticky;
+  top: 80px;
+  height: calc(100vh - 80px);
+  border-right: 2px solid #eeedeb;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  padding-top: 12px;
+  transition: width 0.7s ease-in-out;
+}
+
+.side-bar-closed {
+  width: 54px;
+}
+
+.page-link {
+  text-decoration: none;
+  font-weight: 500;
+  color: #3fa2f6;
+  display: flex;
+  align-items: center;
+  transition: font-size 0.1s ease-in-out;
+  padding: 4px 6px;
+}
+
+.page-link:hover {
+  font-size: 18px;
+}
+.selected-tab {
+  background-color: #615efc;
+  color: #fff !important;
+  border-radius: 2px;
+}
+.nav-icon {
+  color: #0f0f0f;
+  margin-right: 6px;
+}
+
+.menu-bar-btn {
+  font-size: 20px;
+  align-self: flex-end;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+@media screen and (max-width: 576px) {
+  .page-nav-text {
+    display: none;
+  }
+  .side-bar-main-container {
+    width: 40px;
+  }
+  .menu-bar-btn {
+    display: none;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .side-bar-main-container {
+    flex-direction: row;
+    width: 100%;
+    height: 60px;
+    position: sticky;
+    top: 80px;
+    background-color: #fff;
+    padding-top: 0;
+    justify-content: space-between;
+  }
+  .selected-tab {
+    color: #615efc !important;
+    background: none;
+  }
+  .nav-icon {
+    color: initial;
+  }
+  .selected-tab .nav-icon {
+    color: #615efc !important;
+  }
+}
