@@ -77,6 +77,7 @@ const TableGenerator = ({
     reason?: SnackbarCloseReason
   ) => {
     if (reason === "clickaway") {
+      console.log(event);
       return;
     }
 

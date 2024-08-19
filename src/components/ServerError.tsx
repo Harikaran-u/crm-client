@@ -8,7 +8,6 @@ const ServerError = () => {
         alt="server-error-img"
         className="server-error-img"
       />
-      {/* <h2 className="try-after-text">Try after sometime...</h2> */}
     </div>
   );
 };

@@ -266,6 +266,7 @@ const ModifyCustomer = () => {
     reason?: SnackbarCloseReason
   ) => {
     if (reason === "clickaway") {
+      console.log(event);
       return;
     }
 

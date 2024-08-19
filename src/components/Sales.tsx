@@ -18,7 +18,6 @@ import {
   XAxis,
   YAxis,
   Bar,
-  ResponsiveContainer,
 } from "recharts";
 
 import Cookies from "js-cookie";
