@@ -287,8 +287,6 @@ const Sales = () => {
         </div>
       )}
 
-      {isLoading && !isServerError && <Loader />}
-
       {!isLoading && !isServerError && (
         <div className="regional-quarter-sales-container">
           <div className="custom-charts-container">

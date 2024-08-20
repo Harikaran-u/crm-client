@@ -10,6 +10,7 @@ import Sales from "./components/Sales";
 import Feedbacks from "./components/Feedbacks";
 import ModifyCustomer from "./components/ModifyCustomer";
 import ProtectedRoute from "./components/ProtectedRoute";
+import Notfound from "./components/Notfound";
 
 const App = () => {
   return (
@@ -35,6 +36,8 @@ const App = () => {
           </Route>
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
+          <Route path="not-found" element={<Notfound />} />
+          <Route path="*" element={<Navigate to="/not-found" />} />
         </Routes>
       </BrowserRouter>
     </div>
