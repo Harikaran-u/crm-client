@@ -19,6 +19,7 @@ import NotificationsActiveIcon from "@mui/icons-material/NotificationsActive";
 import "react-phone-input-2/lib/style.css";
 import { useLocation, useNavigate, useParams } from "react-router-dom";
 import Loader from "./Loader";
+import ServerError from "./ServerError";
 
 const addCustomerUrl = `${import.meta.env.VITE_API_BASE_URL}/customers/create`;
 const addLeadsUrl = `${import.meta.env.VITE_API_BASE_URL}/leads/create`;
@@ -62,7 +63,7 @@ const ModifyCustomer = () => {
   const [snackOpen, setSnackOpen] = useState(false);
   const [apiErrorMsg, setApiErrorMsg] = useState<string>("");
   const [isLoading, setIsLoading] = useState(false);
-
+  const [isServerError, setIsServerError] = useState(false);
   const jwtToken = Cookies.get("jwtToken");
   const location = useLocation();
   const navigate = useNavigate();
@@ -116,7 +117,6 @@ const ModifyCustomer = () => {
         parentPath === "customers" ? addCustomerUrl : addLeadsUrl;
       const response = await fetch(finalUrl, config);
       if (response.ok) {
-        // const data = await response.text();
         setIsLoading(false);
         navigate(`/${parentPath}`, { replace: true });
       } else {
@@ -126,9 +126,9 @@ const ModifyCustomer = () => {
         setIsLoading(false);
       }
     } catch (error) {
-      setIsLoading(false);
-      console.log(error);
+      setIsServerError(true);
     }
+    setIsLoading(false);
   };
 
   const updateUser = async () => {
@@ -162,8 +162,6 @@ const ModifyCustomer = () => {
       if (response.ok) {
         setIsLoading(false);
         navigate(`/${parentPath}`, { replace: true });
-        // const data = await response.text();
-        // console.log(data);
       } else {
         const errorMessage = await response.text();
         setApiErrorMsg(errorMessage);
@@ -171,9 +169,9 @@ const ModifyCustomer = () => {
         setIsLoading(false);
       }
     } catch (error) {
-      setIsLoading(false);
-      console.log(error);
+      setIsServerError(true);
     }
+    setIsLoading(false);
   };
 
   const getUser = async (path: string) => {
@@ -200,7 +198,6 @@ const ModifyCustomer = () => {
         // setCustomerCityName(data.address.city);
         setCustomerPincode(data.address.pincode + "");
         setRegionName(data.address.region);
-        // console.log(data);
       } else {
         const msg = await response.text();
         setIsLoading(false);
@@ -209,9 +206,9 @@ const ModifyCustomer = () => {
         navigate(`/${parentPath}`, { replace: true });
       }
     } catch (error) {
-      setIsLoading(false);
-      console.log(error);
+      setIsServerError(true);
     }
+    setIsLoading(false);
   };
 
   const handleSubmit = (e: FormEvent) => {
@@ -297,13 +294,14 @@ const ModifyCustomer = () => {
           }
         />
       </Snackbar>
+      {isServerError && <ServerError />}
       <img
         src="https://res.cloudinary.com/diuvnny8c/image/upload/v1723780632/79310663_9846829.jpg"
         alt="add-customer-logo"
         className="add-customer-img"
       />
-      {isLoading && <Loader />}
-      {!isLoading && (
+      {isLoading && !isServerError && <Loader />}
+      {!isLoading && !isServerError && (
         <form onSubmit={handleSubmit} className="add-new-customer-form">
           <TextField
             label="Name"

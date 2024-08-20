@@ -1,4 +1,11 @@
 import { FormControl, InputLabel, MenuItem, Select } from "@mui/material";
+import {
+  IconButton,
+  Snackbar,
+  SnackbarCloseReason,
+  SnackbarContent,
+} from "@mui/material";
+import NotificationsActiveIcon from "@mui/icons-material/NotificationsActive";
 import "../styles/Feedbacks.css";
 import { useEffect, useState } from "react";
 import { FeedbackRating, FeedbackStats } from "../types/types";
@@ -16,6 +23,7 @@ import {
   Cell,
 } from "recharts";
 import Loader from "./Loader";
+import ServerError from "./ServerError";
 
 const availableTrends = ["6-months", "1-year", "2-year", "3-year"];
 const colors = ["#88D66C", "#FFDB00", "#EE4E4E"];
@@ -33,6 +41,9 @@ const Feedbacks = () => {
   const [feedbackList, setFeedbackList] = useState<FeedbackRating[]>([]);
   const [feedbackStats, setFeedbackStats] = useState<FeedbackStats>();
   const [isLoading, setIsLoading] = useState(false);
+  const [isServerError, setIsServerError] = useState(false);
+  const [dataErrorMsg, setDataErrorMsg] = useState("");
+  const [snackOpen, setSnackOpen] = useState(false);
 
   const token = Cookies.get("jwtToken");
 
@@ -41,6 +52,18 @@ const Feedbacks = () => {
     headers: {
       Authorization: `Bearer ${token}`,
     },
+  };
+
+  const handleSnackClose = (
+    event: React.SyntheticEvent | Event,
+    reason?: SnackbarCloseReason
+  ) => {
+    if (reason === "clickaway") {
+      console.log(event);
+      return;
+    }
+
+    setSnackOpen(false);
   };
 
   const getFeedBackList = async () => {
@@ -53,13 +76,12 @@ const Feedbacks = () => {
         setFeedbackList(data.reverse());
         setIsLoading(false);
       } else {
-        setIsLoading(false);
-        console.log(response);
+        setFeedbackList([]);
       }
     } catch (error) {
-      setIsLoading(false);
-      console.log(error);
+      setIsServerError(true);
     }
+    setIsLoading(false);
   };
 
   const getFeedbackStats = async () => {
@@ -71,13 +93,13 @@ const Feedbacks = () => {
         setFeedbackStats(data);
         setIsLoading(false);
       } else {
-        setIsLoading(false);
-        console.log(response);
+        const errMsg = await response.text();
+        setDataErrorMsg(errMsg);
       }
     } catch (error) {
-      setIsLoading(false);
-      console.log(error);
+      setIsServerError(true);
     }
+    setIsLoading(false);
   };
 
   useEffect(() => {
@@ -99,6 +121,29 @@ const Feedbacks = () => {
 
   return (
     <div className="feedback-main-container">
+      <Snackbar
+        open={snackOpen}
+        autoHideDuration={10000}
+        onClose={handleSnackClose}
+        message={dataErrorMsg}
+        anchorOrigin={{ vertical: "top", horizontal: "right" }}
+      >
+        <SnackbarContent
+          style={{ backgroundColor: "red" }}
+          message={dataErrorMsg}
+          action={
+            <IconButton
+              size="small"
+              aria-label="close"
+              color="inherit"
+              onClick={handleSnackClose}
+            >
+              <NotificationsActiveIcon fontSize="small" />
+            </IconButton>
+          }
+        />
+      </Snackbar>
+      {isServerError && <ServerError />}
       <FormControl className="trend-input">
         <InputLabel id="trend-label" className="trend-label">
           Trends
@@ -119,8 +164,8 @@ const Feedbacks = () => {
 
       <div className="feedback-charts-container">
         <h2 className="feedback-head">Customer Avg Ratings</h2>
-        {isLoading && <Loader />}
-        {!isLoading && (
+        {isLoading && !isServerError && <Loader />}
+        {!isLoading && !isServerError && (
           <LineChart
             width={730}
             height={250}
@@ -139,8 +184,8 @@ const Feedbacks = () => {
       </div>
       <div className="feedback-charts-container-sm">
         <h2 className="feedback-head">Customer Avg Ratings</h2>
-        {isLoading && <Loader />}
-        {!isLoading && (
+        {isLoading && !isServerError && <Loader />}
+        {!isLoading && !isServerError && (
           <LineChart
             width={530}
             height={250}
@@ -159,8 +204,8 @@ const Feedbacks = () => {
       </div>
       <div className="feedback-charts-container">
         <h2 className="feedback-head">Customer Satisfaction</h2>
-        {isLoading && <Loader />}
-        {!isLoading && (
+        {isLoading && !isServerError && <Loader />}
+        {!isLoading && !isServerError && (
           <PieChart width={400} height={400}>
             <Pie
               data={getConvertedFeedbackStats()}
@@ -184,8 +229,8 @@ const Feedbacks = () => {
       </div>
       <div className="feedback-charts-container-sm">
         <h2 className="feedback-head">Customer Satisfaction</h2>
-        {isLoading && <Loader />}
-        {!isLoading && (
+        {isLoading && !isServerError && <Loader />}
+        {!isLoading && !isServerError && (
           <PieChart width={280} height={280}>
             <Pie
               data={getConvertedFeedbackStats()}

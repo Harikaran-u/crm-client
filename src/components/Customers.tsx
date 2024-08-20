@@ -49,7 +49,6 @@ const Customers = () => {
   const [isNoData, setIsNoData] = useState(false);
 
   const token = Cookies.get("jwtToken");
-  // console.log(token);
 
   const getAllCustomers = async () => {
     setIsLoading(true);
