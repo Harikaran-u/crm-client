@@ -34,10 +34,10 @@
 }
 .recharts-legend-wrapper {
   width: 100% !important;
+  position: unset !important;
 }
 .year-input {
   width: 100px !important;
-  /* align-self: flex-end; */
 }
 .yearly-data-input-container {
   display: flex;
