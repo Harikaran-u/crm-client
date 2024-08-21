@@ -8,10 +8,12 @@
   align-items: center;
   justify-content: space-between;
   padding: 20px;
+  margin-top: 20px;
 }
 .custom-charts-container {
   display: flex;
   flex-direction: column;
+  margin-top: 20px;
 }
 
 .customer-chart-head {
@@ -34,7 +36,7 @@
 }
 .recharts-legend-wrapper {
   width: 100% !important;
-  position: unset !important;
+  position: static !important;
 }
 .year-input {
   width: 100px !important;
