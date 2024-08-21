@@ -23,7 +23,7 @@
 
 @media screen and (max-width: 576px) {
   .customer-main-container {
-    width: 90%;
+    width: 100%;
     padding: 4px;
   }
 }
